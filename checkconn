@@ -1,0 +1,11 @@
+#!/bin/bash
+LOG=/tmp/mylog.log
+
+if [[ "$(ping -c 2 -i 2 10.0.0.99 | grep '100% packet loss' )" != "" ]]; then
+    echo "`date` :unitelco indisponivel" | tee -a $LOG
+        ./define_ajato.sh | tee -a $LOG
+    exit 1
+else
+    echo "`date` :unitelco online" | tee -a $LOG
+        ./define_unitelco.sh | tee -a $LOG
+fi

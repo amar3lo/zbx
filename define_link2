@@ -1,0 +1,14 @@
+#!/bin/bash
+LOG=/tmp/mylog.log
+file=/home/zabbix_proxy.conf
+
+if grep -q 189.8.47.146 $file; then
+
+        echo "`date` :o ip e unitelco" | tee -a $LOG
+   exit 1
+ else
+        # call
+        echo "`date` :alterando ip para unitelco" | tee -a $LOG
+        sed -i 's/187.121.26.34/189.8.47.146/g' $file
+
+ fi
